@@ -19,6 +19,7 @@ export default function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/restaurants" element={<Restaurants />} />
+        <Route path="/queue" element={<Queue />} />
         <Route path="/queue/:restaurantId" element={<Queue />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/history" element={<History />} />
