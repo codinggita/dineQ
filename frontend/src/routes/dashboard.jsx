@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { useMemo, useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
+import { useMemo, useState, useEffect } from 'react';
 import {
   Users,
   Clock,
@@ -10,16 +10,16 @@ import {
   Minus,
   TrendingUp,
   History as HistoryIcon,
-} from "lucide-react";
-import { PageShell } from "@/components/layout/PageShell";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-import { waitTone } from "@/data/restaurants";
-import { ownerHistory } from "@/data/ownerHistory";
-import { Skeleton } from "@/components/ui/skeleton";
-import { motion, AnimatePresence } from "framer-motion";
+} from 'lucide-react';
+import { PageShell } from '@/components/layout/PageShell';
+import { Button } from '@/components/ui/button.tsx';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card.tsx';
+import { Input } from '@/components/ui/input.tsx';
+import { Badge } from '@/components/ui/badge.tsx';
+import { waitTone } from '@/data/restaurants';
+import { ownerHistory } from '@/data/ownerHistory';
+import { Skeleton } from '@/components/ui/skeleton.tsx';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -35,49 +35,49 @@ export default function DashboardPage() {
   const [loading, setLoading] = useState(true);
   const [parties, setParties] = useState([
     {
-      id: "p1",
-      name: "Anderson",
+      id: 'p1',
+      name: 'Anderson',
       size: 2,
-      phone: "+1 555-0142",
+      phone: '+1 555-0142',
       joinedAt: 38,
-      status: "notified",
+      status: 'notified',
       preorder: true,
     },
     {
-      id: "p2",
-      name: "Chen",
+      id: 'p2',
+      name: 'Chen',
       size: 4,
-      phone: "+1 555-0188",
+      phone: '+1 555-0188',
       joinedAt: 31,
-      status: "waiting",
-      notes: "Window seat",
+      status: 'waiting',
+      notes: 'Window seat',
     },
-    { id: "p3", name: "Okafor", size: 3, phone: "+1 555-0123", joinedAt: 24, status: "waiting" },
+    { id: 'p3', name: 'Okafor', size: 3, phone: '+1 555-0123', joinedAt: 24, status: 'waiting' },
     {
-      id: "p4",
-      name: "Rivera",
+      id: 'p4',
+      name: 'Rivera',
       size: 2,
-      phone: "+1 555-0167",
+      phone: '+1 555-0167',
       joinedAt: 18,
-      status: "waiting",
+      status: 'waiting',
       preorder: true,
     },
     {
-      id: "p5",
-      name: "Patel",
+      id: 'p5',
+      name: 'Patel',
       size: 6,
-      phone: "+1 555-0199",
+      phone: '+1 555-0199',
       joinedAt: 12,
-      status: "waiting",
-      notes: "Birthday",
+      status: 'waiting',
+      notes: 'Birthday',
     },
-    { id: "p6", name: "Müller", size: 2, phone: "+1 555-0111", joinedAt: 6, status: "waiting" },
+    { id: 'p6', name: 'Müller', size: 2, phone: '+1 555-0111', joinedAt: 6, status: 'waiting' },
   ]);
   const [waitPerParty, setWaitPerParty] = useState(8);
-  const [search, setSearch] = useState("");
-  const [newName, setNewName] = useState("");
+  const [search, setSearch] = useState('');
+  const [newName, setNewName] = useState('');
   const [newSize, setNewSize] = useState(2);
-  const [newPhone, setNewPhone] = useState("");
+  const [newPhone, setNewPhone] = useState('');
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1500);
@@ -85,30 +85,30 @@ export default function DashboardPage() {
   }, []);
 
   const active = useMemo(
-    () => parties.filter((p) => p.status === "waiting" || p.status === "notified"),
-    [parties],
+    () => parties.filter((p) => p.status === 'waiting' || p.status === 'notified'),
+    [parties]
   );
   const filtered = useMemo(
     () =>
       active.filter(
-        (p) => p.name.toLowerCase().includes(search.toLowerCase()) || p.phone.includes(search),
+        (p) => p.name.toLowerCase().includes(search.toLowerCase()) || p.phone.includes(search)
       ),
-    [active, search],
+    [active, search]
   );
 
   const seatedToday =
-    ownerHistory.filter((h) => h.status === "seated").length +
-    parties.filter((p) => p.status === "seated").length;
+    ownerHistory.filter((h) => h.status === 'seated').length +
+    parties.filter((p) => p.status === 'seated').length;
   const noShows =
-    ownerHistory.filter((h) => h.status === "no-show").length +
-    parties.filter((p) => p.status === "no-show").length;
+    ownerHistory.filter((h) => h.status === 'no-show').length +
+    parties.filter((p) => p.status === 'no-show').length;
   const guestsWaiting = active.reduce((sum, p) => sum + p.size, 0);
   const avgWait = active.length > 0 ? Math.round((active.length * waitPerParty) / 2) : 0;
 
   function updateStatus(id, status) {
     setParties((prev) => {
       const party = prev.find((p) => p.id === id);
-      if (party && (status === "seated" || status === "no-show")) {
+      if (party && (status === 'seated' || status === 'no-show')) {
         return prev.filter((p) => p.id !== id);
       }
       return prev.map((p) => (p.id === id ? { ...p, status } : p));
@@ -136,14 +136,14 @@ export default function DashboardPage() {
         id: `p${Date.now()}`,
         name: newName.trim(),
         size: newSize,
-        phone: newPhone || "—",
+        phone: newPhone || '—',
         joinedAt: 0,
-        status: "waiting",
+        status: 'waiting',
       },
     ]);
-    setNewName("");
+    setNewName('');
     setNewSize(2);
-    setNewPhone("");
+    setNewPhone('');
   }
 
   const tone = waitTone(avgWait);
@@ -224,10 +224,10 @@ export default function DashboardPage() {
             className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8"
           >
             {[
-              { icon: Users, label: "Parties waiting", value: active.length },
-              { icon: TrendingUp, label: "Guests in queue", value: guestsWaiting },
-              { icon: Clock, label: "Avg. wait", value: `${avgWait}m`, accent: tone.color },
-              { icon: CheckCircle2, label: "Seated today", value: seatedToday },
+              { icon: Users, label: 'Parties waiting', value: active.length },
+              { icon: TrendingUp, label: 'Guests in queue', value: guestsWaiting },
+              { icon: Clock, label: 'Avg. wait', value: `${avgWait}m`, accent: tone.color },
+              { icon: CheckCircle2, label: 'Seated today', value: seatedToday },
             ].map((stat, i) => (
               <motion.div
                 key={i}
@@ -239,7 +239,7 @@ export default function DashboardPage() {
                   {stat.icon && <stat.icon className="h-4 w-4" />}
                   {stat.label}
                 </div>
-                <div className={`font-display text-3xl font-semibold mt-2 ${stat.accent ?? ""}`}>
+                <div className={`font-display text-3xl font-semibold mt-2 ${stat.accent ?? ''}`}>
                   {stat.value}
                 </div>
               </motion.div>
@@ -322,7 +322,7 @@ export default function DashboardPage() {
                                   Pre-ordered
                                 </Badge>
                               )}
-                              {party.status === "notified" && (
+                              {party.status === 'notified' && (
                                 <Badge className="text-xs bg-secondary text-foreground">
                                   Notified
                                 </Badge>
@@ -358,18 +358,18 @@ export default function DashboardPage() {
                           </div>
                         </div>
                         <div className="flex flex-wrap gap-2 mt-3">
-                          {party.status !== "notified" && (
+                          {party.status !== 'notified' && (
                             <Button
                               size="sm"
                               variant="outline"
-                              onClick={() => updateStatus(party.id, "notified")}
+                              onClick={() => updateStatus(party.id, 'notified')}
                             >
                               <Bell className="h-3.5 w-3.5" /> Notify
                             </Button>
                           )}
                           <motion.button
                             whileTap={{ scale: 0.95 }}
-                            onClick={() => updateStatus(party.id, "seated")}
+                            onClick={() => updateStatus(party.id, 'seated')}
                             className="px-3 py-1.5 rounded-lg gradient-gold text-primary-foreground text-sm flex items-center gap-1"
                           >
                             <CheckCircle2 className="h-3.5 w-3.5" /> Seat now
@@ -378,7 +378,7 @@ export default function DashboardPage() {
                             size="sm"
                             variant="ghost"
                             className="text-muted-foreground hover:text-destructive"
-                            onClick={() => updateStatus(party.id, "no-show")}
+                            onClick={() => updateStatus(party.id, 'no-show')}
                           >
                             <XCircle className="h-3.5 w-3.5" /> No-show
                           </Button>
