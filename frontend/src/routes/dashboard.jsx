@@ -12,13 +12,11 @@ import {
   History as HistoryIcon,
 } from 'lucide-react';
 import { PageShell } from '@/components/layout/PageShell';
-import { Button } from '@/components/ui/button.tsx';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card.tsx';
-import { Input } from '@/components/ui/input.tsx';
-import { Badge } from '@/components/ui/badge.tsx';
-import { waitTone } from '@/data/restaurants';
-import { ownerHistory } from '@/data/ownerHistory';
-import { Skeleton } from '@/components/ui/skeleton.tsx';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Badge } from '@/components/ui/badge';
+import { Skeleton } from '@/components/ui/skeleton';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const containerVariants = {

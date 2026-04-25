@@ -11,10 +11,10 @@ import {
   Clock,
 } from 'lucide-react';
 import { PageShell } from '@/components/layout/PageShell';
-import { Button } from '@/components/ui/button.tsx';
-import { Card, CardContent } from '@/components/ui/card.tsx';
-import { Input } from '@/components/ui/input.tsx';
-import { Badge } from '@/components/ui/badge.tsx';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Badge } from '@/components/ui/badge';
 import { ownerHistory } from '@/data/ownerHistory';
 
 export default function OwnerHistoryPage() {

@@ -11,7 +11,7 @@ import {
   Camera,
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { Skeleton } from '@/components/ui/skeleton.tsx';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export default function ProfilePage() {
   const [loading, setLoading] = useState(true);
