@@ -1,19 +1,19 @@
-import { Link, useNavigate } from "react-router-dom";
-import { UtensilsCrossed, Mail, Lock, User, Phone, ArrowRight, Check, Store } from "lucide-react";
-import { useState } from "react";
-import { RoleToggle } from "@/components/auth/RoleToggle";
-import { setStoredRole } from "@/lib/role";
+import { Link, useNavigate } from 'react-router-dom';
+import { UtensilsCrossed, Mail, Lock, User, Phone, ArrowRight, Check, Store } from 'lucide-react';
+import { useState } from 'react';
+import { RoleToggle } from '@/components/auth/RoleToggle';
+import { setStoredRole } from '@/lib/role';
 
 export default function RegisterPage() {
   const navigate = useNavigate();
-  const [role, setRole] = useState("customer");
-  const [form, setForm] = useState({ name: "", email: "", phone: "", password: "" });
+  const [role, setRole] = useState('customer');
+  const [form, setForm] = useState({ name: '', email: '', phone: '', password: '' });
   const set = (k) => (v) => setForm({ ...form, [k]: v });
 
   function handleSubmit(e) {
     e.preventDefault();
     setStoredRole(role);
-    navigate(role === "owner" ? "/dashboard" : "/restaurants");
+    navigate(role === 'owner' ? '/dashboard' : '/restaurants');
   }
 
   return (
@@ -38,19 +38,19 @@ export default function RegisterPage() {
 
           <form className="mt-6 space-y-5" onSubmit={handleSubmit}>
             <Field
-              label={role === "owner" ? "Restaurant name" : "Full name"}
-              icon={role === "owner" ? Store : User}
+              label={role === 'owner' ? 'Restaurant name' : 'Full name'}
+              icon={role === 'owner' ? Store : User}
               type="text"
               value={form.name}
-              onChange={set("name")}
-              placeholder={role === "owner" ? "Ember & Oak" : "Jane Doe"}
+              onChange={set('name')}
+              placeholder={role === 'owner' ? 'Ember & Oak' : 'Jane Doe'}
             />
             <Field
               label="Email"
               icon={Mail}
               type="email"
               value={form.email}
-              onChange={set("email")}
+              onChange={set('email')}
               placeholder="you@example.com"
             />
             <Field
@@ -58,7 +58,7 @@ export default function RegisterPage() {
               icon={Phone}
               type="tel"
               value={form.phone}
-              onChange={set("phone")}
+              onChange={set('phone')}
               placeholder="+1 555 0102"
             />
             <Field
@@ -66,7 +66,7 @@ export default function RegisterPage() {
               icon={Lock}
               type="password"
               value={form.password}
-              onChange={set("password")}
+              onChange={set('password')}
               placeholder="At least 8 characters"
             />
 
@@ -76,11 +76,11 @@ export default function RegisterPage() {
                 className="mt-0.5 rounded border-border bg-input accent-[var(--gold)]"
                 defaultChecked
               />
-              I agree to the{" "}
+              I agree to the{' '}
               <a href="#" className="text-gold hover:underline">
                 Terms
-              </a>{" "}
-              and{" "}
+              </a>{' '}
+              and{' '}
               <a href="#" className="text-gold hover:underline">
                 Privacy Policy
               </a>
@@ -91,13 +91,13 @@ export default function RegisterPage() {
               type="submit"
               className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg gradient-gold text-primary-foreground font-medium shadow-gold hover:opacity-90 transition"
             >
-              Create {role === "owner" ? "owner" : "customer"} account{" "}
+              Create {role === 'owner' ? 'owner' : 'customer'} account{' '}
               <ArrowRight className="h-4 w-4" />
             </button>
           </form>
 
           <p className="mt-8 text-sm text-center text-muted-foreground">
-            Already have an account?{" "}
+            Already have an account?{' '}
             <Link to="/login" className="text-gold hover:underline font-medium">
               Log in
             </Link>
@@ -120,10 +120,10 @@ export default function RegisterPage() {
             </h2>
             <ul className="space-y-3 text-sm">
               {[
-                "Live wait times across 2,400+ restaurants",
-                "Pre-order meals before you sit down",
-                "Get notified the moment your table is ready",
-                "Build a history of favorites you love",
+                'Live wait times across 2,400+ restaurants',
+                'Pre-order meals before you sit down',
+                'Get notified the moment your table is ready',
+                'Build a history of favorites you love',
               ].map((b) => (
                 <li key={b} className="flex items-center gap-2">
                   <Check className="h-4 w-4 text-gold" />
@@ -149,7 +149,8 @@ function Field({ label, icon: Icon, type, value, onChange, placeholder }) {
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
-          className="w-full pl-10 pr-3 py-2.5 rounded-lg bg-input border border-border focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/20 transition text-sm"
+          style={{ backgroundColor: 'var(--color-card)', color: 'var(--color-foreground)' }}
+          className="w-full pl-10 pr-3 py-2.5 rounded-lg border border-border focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/20 transition text-sm"
         />
       </div>
     </div>

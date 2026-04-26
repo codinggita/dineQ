@@ -1,19 +1,19 @@
-import { Link, useNavigate } from "react-router-dom";
-import { UtensilsCrossed, Mail, Lock, ArrowRight } from "lucide-react";
-import { useState } from "react";
-import { RoleToggle } from "@/components/auth/RoleToggle";
-import { setStoredRole } from "@/lib/role";
+import { Link, useNavigate } from 'react-router-dom';
+import { UtensilsCrossed, Mail, Lock, ArrowRight } from 'lucide-react';
+import { useState } from 'react';
+import { RoleToggle } from '@/components/auth/RoleToggle';
+import { setStoredRole } from '@/lib/role';
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  const [role, setRole] = useState("customer");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [role, setRole] = useState('customer');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   function handleSubmit(e) {
     e.preventDefault();
     setStoredRole(role);
-    navigate(role === "owner" ? "/dashboard" : "/restaurants");
+    navigate(role === 'owner' ? '/dashboard' : '/restaurants');
   }
 
   return (
@@ -95,7 +95,7 @@ export default function LoginPage() {
               type="submit"
               className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg gradient-gold text-primary-foreground font-medium shadow-gold hover:opacity-90 transition"
             >
-              Log in as {role === "owner" ? "Owner" : "Customer"} <ArrowRight className="h-4 w-4" />
+              Log in as {role === 'owner' ? 'Owner' : 'Customer'} <ArrowRight className="h-4 w-4" />
             </button>
           </form>
 
@@ -110,7 +110,7 @@ export default function LoginPage() {
           </button>
 
           <p className="mt-8 text-sm text-center text-muted-foreground">
-            Don't have an account?{" "}
+            Don't have an account?{' '}
             <Link to="/register" className="text-gold hover:underline font-medium">
               Sign up
             </Link>
@@ -132,7 +132,8 @@ function Field({ label, icon: Icon, type, value, onChange, placeholder }) {
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
-          className="w-full pl-10 pr-3 py-2.5 rounded-lg bg-input border border-border focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/20 transition text-sm"
+          style={{ backgroundColor: 'var(--color-card)', color: 'var(--color-foreground)' }}
+          className="w-full pl-10 pr-3 py-2.5 rounded-lg border border-border focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/20 transition text-sm"
         />
       </div>
     </div>
