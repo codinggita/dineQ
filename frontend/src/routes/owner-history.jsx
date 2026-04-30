@@ -12,10 +12,10 @@ import {
   ShoppingBag,
 } from 'lucide-react';
 import { PageShell } from '@/components/layout/PageShell';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/Button';
+import { Card, CardContent } from '@/components/ui/Card';
+import { Input } from '@/components/ui/Input';
+import { Badge } from '@/components/ui/Badge';
 import { historyService } from '@/services/historyService';
 import { connectSocket } from '@/socket/socketClient';
 import { restaurantService } from '@/services/restaurantService';

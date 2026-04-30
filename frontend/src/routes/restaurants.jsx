@@ -2,7 +2,7 @@ import { PageShell } from '@/components/layout/PageShell';
 import { useMemo, useState, useEffect } from 'react';
 import { Search, Filter, SlidersHorizontal } from 'lucide-react';
 import { RestaurantCard } from '@/components/restaurants/RestaurantCard';
-import { Skeleton } from '@/components/ui/skeleton';
+import { Skeleton } from '@/components/ui/Skeleton';
 import { motion } from 'framer-motion';
 import { restaurantService } from '@/services/restaurantService';
 

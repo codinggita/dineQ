@@ -1,7 +1,7 @@
 import { PageShell } from '@/components/layout/PageShell';
 import { Calendar, Clock, MapPin, Receipt, RotateCw } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { Skeleton } from '@/components/ui/skeleton';
+import { Skeleton } from '@/components/ui/Skeleton';
 import { historyService } from '@/services/historyService';
 
 export default function HistoryPage() {

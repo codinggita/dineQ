@@ -1,7 +1,7 @@
 import { PageShell } from '@/components/layout/PageShell';
 import { Calendar, Clock, MapPin, Star, Receipt, RotateCw } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { Skeleton } from '@/components/ui/skeleton';
+import { Skeleton } from '@/components/ui/Skeleton';
 
 export default function HistoryPage() {
   const [loading, setLoading] = useState(true);
