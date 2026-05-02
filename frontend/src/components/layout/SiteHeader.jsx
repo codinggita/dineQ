@@ -27,7 +27,12 @@ export function SiteHeader() {
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
-      setUser(JSON.parse(storedUser));
+      const parsed = JSON.parse(storedUser);
+      if (parsed.avatar && !parsed.avatar.startsWith('http')) {
+        parsed.avatar = `${import.meta.env.VITE_API_URL}${parsed.avatar}`;
+        localStorage.setItem('user', JSON.stringify(parsed));
+      }
+      setUser(parsed);
     }
   }, []);
 

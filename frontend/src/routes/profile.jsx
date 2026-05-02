@@ -124,7 +124,10 @@ export default function ProfilePage() {
       }
 
       const response = await res.json();
-      const updatedUser = { ...user, avatar: response.data.avatar };
+      const avatarUrl = response.data.avatar.startsWith('http')
+        ? response.data.avatar
+        : `${apiUrl}${response.data.avatar}`;
+      const updatedUser = { ...user, avatar: avatarUrl };
       setUser(updatedUser);
       localStorage.setItem('user', JSON.stringify(updatedUser));
       handleCancelPreview();
@@ -133,6 +136,12 @@ export default function ProfilePage() {
     } finally {
       setUploading(false);
     }
+  };
+
+  const getFullAvatarUrl = (url) => {
+    if (!url) return '';
+    if (url.startsWith('http')) return url;
+    return `${import.meta.env.VITE_API_URL}${url}`;
   };
 
   useEffect(() => {
@@ -150,14 +159,19 @@ export default function ProfilePage() {
           });
           if (res.ok) {
             const response = await res.json();
-            const userData = response.data;
+            const userData = {
+              ...response.data,
+              avatar: response.data.avatar ? getFullAvatarUrl(response.data.avatar) : '',
+            };
             setUser(userData);
             localStorage.setItem('user', JSON.stringify(userData));
           } else if (storedUser) {
-            setUser(JSON.parse(storedUser));
+            const parsed = JSON.parse(storedUser);
+            setUser({ ...parsed, avatar: getFullAvatarUrl(parsed.avatar) });
           }
         } else if (storedUser) {
-          setUser(JSON.parse(storedUser));
+          const parsed = JSON.parse(storedUser);
+          setUser({ ...parsed, avatar: getFullAvatarUrl(parsed.avatar) });
         }
       } catch (e) {
         console.error('Failed to fetch profile', e);
