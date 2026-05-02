@@ -526,7 +526,7 @@ export default function MyQueuePage() {
           {showRatingDialog && (
             <RatingDialog
               restaurantName={restaurant?.name}
-              restaurantId={restaurant?._id}
+              restaurantId={restaurant?.id}
               onSubmit={async (restaurantId, score) => {
                 try {
                   await ratingService.submitRating({ restaurantId, score });

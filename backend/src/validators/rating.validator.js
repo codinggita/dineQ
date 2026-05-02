@@ -6,8 +6,11 @@ export const submitRatingValidator = [
     .withMessage('Restaurant ID is required')
     .isMongoId(),
   body('score')
-    .isInt({ min: 1, max: 5 })
-    .withMessage('Score must be between 1 and 5'),
+    .custom((value) => {
+      const num = Number(value);
+      return Number.isInteger(num) && num >= 1 && num <= 5;
+    })
+    .withMessage('Score must be an integer between 1 and 5'),
 ];
 
 export const validateResult = (req, res, next) => {
