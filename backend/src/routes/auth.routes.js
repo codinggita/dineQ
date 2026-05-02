@@ -1,5 +1,6 @@
 import express from 'express';
 import * as authController from '../controllers/auth.controller.js';
+import { upload } from '../middleware/upload.middleware.js';
 import {
   registerValidator,
   loginValidator,
@@ -25,6 +26,12 @@ router.patch(
   updateProfileValidator,
   validateResult,
   authController.updateProfile
+);
+router.post(
+  '/avatar',
+  authenticate,
+  upload.single('image'),
+  authController.uploadAvatar
 );
 
 export default router;

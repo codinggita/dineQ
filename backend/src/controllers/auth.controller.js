@@ -26,4 +26,19 @@ export const updateProfile = asyncHandler(async (req, res) => {
   ApiResponse.success(res, 'Profile updated successfully', result);
 });
 
-export default { register, login, logout, getProfile, updateProfile };
+export const uploadAvatar = asyncHandler(async (req, res) => {
+  if (!req.file) {
+    throw new ApiError('No file uploaded', 400);
+  }
+  const result = await authService.updateUserAvatar(req.user._id, req.file);
+  ApiResponse.success(res, 'Avatar updated successfully', result);
+});
+
+export default {
+  register,
+  login,
+  logout,
+  getProfile,
+  updateProfile,
+  uploadAvatar,
+};

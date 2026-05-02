@@ -1,6 +1,8 @@
 import { User, Restaurant } from '../models/index.js';
 import ApiError from '../utils/ApiError.js';
 import { generateToken } from '../utils/generateToken.js';
+import fs from 'fs';
+import path from 'path';
 
 export const registerUser = async ({
   name,
@@ -112,4 +114,44 @@ export const updateUserProfile = async (userId, updates) => {
   };
 };
 
-export default { registerUser, loginUser, getUserProfile, updateUserProfile };
+export const updateUserAvatar = async (userId, file) => {
+  const user = await User.findById(userId);
+  if (!user) {
+    throw ApiError.notFound('User not found');
+  }
+
+  if (user.avatar) {
+    try {
+      const oldPath = path.join(
+        process.cwd(),
+        'uploads',
+        user.avatar.replace('/uploads/', '')
+      );
+      if (fs.existsSync(oldPath)) {
+        fs.unlinkSync(oldPath);
+      }
+    } catch (err) {
+      console.error('Failed to delete old avatar:', err.message);
+    }
+  }
+
+  const avatarUrl = `/uploads/${file.filename}`;
+  user.avatar = avatarUrl;
+  await user.save();
+
+  return {
+    id: user._id,
+    name: user.name,
+    email: user.email,
+    role: user.role,
+    avatar: user.avatar,
+  };
+};
+
+export default {
+  registerUser,
+  loginUser,
+  getUserProfile,
+  updateUserProfile,
+  updateUserAvatar,
+};
