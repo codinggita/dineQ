@@ -2,6 +2,7 @@ import { Queue, Restaurant } from '../../models/index.js';
 import { SOCKET_EVENTS, SOCKET_ROOMS } from '../socketEvents.js';
 import { getIO } from '../index.js';
 import calculateWaitTime from '../../utils/calculateWaitTime.js';
+import { createHistoryFromQueue } from '../../services/history.service.js';
 
 export const handleJoinQueue = async (socket, data) => {
   try {
@@ -84,7 +85,19 @@ export const handleSeatCustomer = async (socket, data) => {
     queueEntry.status = 'seated';
     await queueEntry.save();
 
+    await createHistoryFromQueue(queueEntryId, 'seated');
+
+    const customerId = queueEntry.customer;
     const io = getIO();
+    io.to(SOCKET_ROOMS.CUSTOMER(customerId)).emit(
+      SOCKET_EVENTS.CUSTOMER_SEATED,
+      {
+        queueId: queueEntryId,
+        restaurantId,
+        message: `You have been seated at the restaurant!`,
+      }
+    );
+
     const queue = await Queue.find({
       restaurant: restaurantId,
       status: 'waiting',
@@ -137,7 +150,16 @@ export const handleNoShow = async (socket, data) => {
     queueEntry.status = 'no_show';
     await queueEntry.save();
 
+    await createHistoryFromQueue(queueEntryId, 'no_show');
+
+    const customerId = queueEntry.customer;
     const io = getIO();
+    io.to(SOCKET_ROOMS.CUSTOMER(customerId)).emit('no_show', {
+      queueId: queueEntryId,
+      restaurantId,
+      message: 'You were marked as a no-show.',
+    });
+
     const queue = await Queue.find({
       restaurant: restaurantId,
       status: 'waiting',
