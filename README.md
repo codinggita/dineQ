@@ -91,6 +91,60 @@ There is **no real-time, digital bridge** between a restaurant's queue state and
 
 ***
 
+## 📸 Project Screenshots
+
+### 🧭 Customer Experience
+
+<div align="center">
+  <img src="https://res.cloudinary.com/dzmso2ukz/image/upload/v1777724564/Screenshot_2026-05-02_174439_xnilyb.png" width="250"/>
+  <img src="https://res.cloudinary.com/dzmso2ukz/image/upload/v1777724575/Screenshot_2026-05-02_174453_usrapb.png" width="250"/>
+  <img src="https://res.cloudinary.com/dzmso2ukz/image/upload/v1777724592/Screenshot_2026-05-02_174512_niuchx.png" width="250"/>
+</div>
+
+<div align="center">
+  <img src="https://res.cloudinary.com/dzmso2ukz/image/upload/v1777724604/Screenshot_2026-05-02_174731_jobeux.png" width="250"/>
+  <img src="https://res.cloudinary.com/dzmso2ukz/image/upload/v1777724637/Screenshot_2026-05-02_174750_si67du.png" width="250"/>
+  <img src="https://res.cloudinary.com/dzmso2ukz/image/upload/v1777724652/Screenshot_2026-05-02_174807_knspvc.png" width="250"/>
+</div>
+
+---
+
+### 🧑‍💼 Staff Dashboard
+
+<div align="center">
+  <img src="https://res.cloudinary.com/dzmso2ukz/image/upload/v1777724670/Screenshot_2026-05-02_174838_yz8kuy.png" width="300"/>
+  <img src="https://res.cloudinary.com/dzmso2ukz/image/upload/v1777724689/Screenshot_2026-05-02_174902_tlmnui.png" width="300"/>
+</div>
+
+<div align="center">
+  <img src="https://res.cloudinary.com/dzmso2ukz/image/upload/v1777724700/Screenshot_2026-05-02_174926_jtr4lw.png" width="300"/>
+  <img src="https://res.cloudinary.com/dzmso2ukz/image/upload/v1777724714/Screenshot_2026-05-02_174943_wt6wmj.png" width="300"/>
+</div>
+
+---
+
+### ⚙️ Additional Views
+
+<div align="center">
+  <img src="https://res.cloudinary.com/dzmso2ukz/image/upload/v1777724728/Screenshot_2026-05-02_174957_rgy5fw.png" width="250"/>
+  <img src="https://res.cloudinary.com/dzmso2ukz/image/upload/v1777724741/Screenshot_2026-05-02_175014_soq2bn.png" width="250"/>
+  <img src="https://res.cloudinary.com/dzmso2ukz/image/upload/v1777724757/Screenshot_2026-05-02_175031_uhsm7c.png" width="250"/>
+</div>
+
+<div align="center">
+  <img src="https://res.cloudinary.com/dzmso2ukz/image/upload/v1777724770/Screenshot_2026-05-02_175043_uae4vb.png" width="250"/>
+  <img src="https://res.cloudinary.com/dzmso2ukz/image/upload/v1777724781/Screenshot_2026-05-02_175107_ff4odx.png" width="250"/>
+  <img src="https://res.cloudinary.com/dzmso2ukz/image/upload/v1777724794/Screenshot_2026-05-02_175114_ch48uy.png" width="250"/>
+</div>
+
+---
+
+### 🌟 Highlight Screen
+
+<div align="center">
+  <img src="https://res.cloudinary.com/dzmso2ukz/image/upload/v1777724803/Screenshot_2026-05-02_175134_h3vxes.png" width="600"/>
+</div>
+
 ## 🏗️ Architecture
 
 ```
