@@ -8,12 +8,22 @@
 
 *Skip the wait. Order ahead. Dine smarter.*
 
-[
-[
-[
-[
-[
-[
+## 🔗 Important Links
+
+🚀 **Live App**  
+👉 https://dineq.netlify.app/login  
+
+📡 **API Documentation (Postman)**  
+👉 https://documenter.getpostman.com/view/50839202/2sBXqKnfFA  
+
+🎨 **Figma Design**  
+👉 https://www.figma.com/design/QPgP6519eyDxz2V8Dw6Nll/DineQ?node-id=0-1&t=cuEZn2wzXNTZafWz-1  
+
+🎥 **Project Demo (YouTube)**  
+👉 https://www.youtube.com/watch?v=CXlneDR6fG8  
+
+---
+
 
 [🎨 Figma Design](#-figma-design) -  [🚀 Features](#-features) -  [🏗️ Architecture](#️-architecture) -  [📁 Folder Structure](#-folder-structure) -  [⚡ Quick Start](#-quick-start) -  [🔌 API Reference](#-api-reference)
 
